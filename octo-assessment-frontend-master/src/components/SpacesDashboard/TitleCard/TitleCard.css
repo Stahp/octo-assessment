@@ -1,0 +1,37 @@
+.card-title-style{
+    width: 14%;
+    text-align: center;
+    margin-left: 1%;
+}
+
+.card-title-body{
+    margin: 10%;
+}
+
+.card-title-name{
+    font-weight: bold;
+    font-size: 20%;
+}
+
+.card-title-description{
+    font-weight: lighter;
+    font-size: 10%;
+}
+
+.recently-added-icon{
+    color: #0184FE;
+}
+
+.lock-icon{
+    color: #FFB901;
+}
+
+.icon-size {
+    width: 100%;
+}
+
+.blue-icon-container{
+    border-radius: 50%;
+    width: 50%;
+    background-color: #E5F3FE;
+}

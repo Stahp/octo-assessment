@@ -1,0 +1,47 @@
+.user-details-container{
+    padding-left: 3%;
+    margin-left: 5%;
+    margin-right: 3%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 40%;
+}
+
+.img-style{
+    margin-right: 13%;
+}
+
+.details-name{
+    font-weight: bold;
+    font-size: 90%;
+    margin-bottom: 1%;
+}
+
+.details-company{
+    font-weight: 230;
+    font-size: 70%;
+    margin-bottom: 3%;
+}
+
+.details-description{
+    font-weight: 300;
+    font-size: 70%;
+    margin-bottom: 3%;
+}
+
+.details-date{
+    font-weight: 300;
+    font-size: 70%;
+}
+
+.calendar-icon{
+    margin-top: 0.3%;
+    margin-right: 3%;
+}
+
+.user-icon{
+    margin-top: 140%;
+    width: 30px;
+    height: 30px;
+    color: rgb(195, 224, 247);
+}

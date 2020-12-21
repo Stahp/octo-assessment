@@ -1,0 +1,33 @@
+.h-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.side-bar{
+    width: 4%;
+}
+
+.dashboard-container{
+    width: 97%;
+}
+
+.details-container{
+
+}
+
+.spaces-list-container{
+    background-color: #F4F7FC;
+    width: 100%;
+    padding-left: 7%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.active-spaces-list-container{
+    width: 100%;
+}
+
+.spaces-title{
+    font-weight: bold;
+    margin: 1%;
+}
