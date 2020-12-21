@@ -1,0 +1,15 @@
+input {
+    file {
+    # Add eureka/zuul/assessment log files
+        path => "/Users/mounjidabderrahmane/intellij-workspace/octo-project/*.log"
+        codec => "json"
+    }
+}
+filter {
+}
+output {
+   elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "octo-assessment-%{+YYYY.MM.dd}"
+    }
+}
