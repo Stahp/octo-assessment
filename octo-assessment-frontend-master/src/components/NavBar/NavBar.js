@@ -4,7 +4,7 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import { Navbar, Nav, Image, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav, Image, Form, FormControl, Button, NavDropdown} from 'react-bootstrap';
 import Login from '../Login/Login';
 import { FaSearch } from 'react-icons/fa';
 import './NavBar.css';
@@ -19,13 +19,15 @@ function NavBar() {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" >
-                    <Form inline>
-                        <FormControl type="text" size="sm" placeholder="Search" className="mr-sm-2 search-form" />
-                    </Form>
                     <Nav className="mr-auto">
-                        <Nav.Link href="/">
-                            <Button variant="info" size="sm">Add a space</Button>
-                        </Nav.Link>
+                      <NavDropdown title="Add" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="">Spaces</NavDropdown.Item>
+                        <NavDropdown.Item href="">Subspace</NavDropdown.Item>
+                        <NavDropdown.Item href="">Survey</NavDropdown.Item>
+                        <NavDropdown.Item href="">Section</NavDropdown.Item>
+                        <NavDropdown.Item href="">Question</NavDropdown.Item>
+                        <NavDropdown.Item href="">Answer</NavDropdown.Item>
+                      </NavDropdown>
                         <Nav.Link href="/login" className="links">Browse spaces</Nav.Link>
                         <Nav.Link href="/" className="links">Teams</Nav.Link>
                         <Nav.Link href="/" className="links">Profile</Nav.Link>

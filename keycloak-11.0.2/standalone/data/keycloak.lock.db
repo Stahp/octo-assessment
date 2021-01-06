@@ -1,6 +1,6 @@
 #FileLock
-#Fri Dec 18 21:46:08 WEST 2020
+#Fri Jan 01 12:03:00 WEST 2021
 hostName=DESKTOP-6QTHNPR
-id=176779a3fdf5d19fa9dece5f03af2b0bdc55175af23
+id=176bd9d6760e5f156d5d1dd4ae83c0e9c21a78e0533
 method=file
-server=192.168.100.22\:61603
+server=192.168.1.112\:64437

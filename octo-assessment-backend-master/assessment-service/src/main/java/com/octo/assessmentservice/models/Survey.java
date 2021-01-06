@@ -18,6 +18,16 @@ public class Survey {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long Id;
+	private String name;
+    private String description;
+    private Boolean state;
+    @ElementCollection
+    private List<String> tags;
+    @OneToMany(mappedBy = "survey")
+    private List<Section> sections = new ArrayList<>();
+    @ManyToOne
+    private Subspace subspace;
+    
     public String getName() {
 		return name;
 	}
@@ -30,15 +40,6 @@ public class Survey {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	private String name;
-    private String description;
-    private Boolean state;
-    @ElementCollection
-    private List<String> tags;
-    @OneToMany(mappedBy = "survey")
-    private List<Section> sections = new ArrayList<>();
-    @ManyToOne
-    private Subspace subspace;
 	public Boolean getState() {
 		return state;
 	}

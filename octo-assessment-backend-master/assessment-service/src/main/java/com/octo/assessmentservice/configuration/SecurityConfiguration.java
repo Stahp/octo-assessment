@@ -31,7 +31,7 @@ public class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter 
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/spaces/**")
-                .hasAuthority("app-moderator");
+                .anyRequest()
+                .authenticated();
     }
 }

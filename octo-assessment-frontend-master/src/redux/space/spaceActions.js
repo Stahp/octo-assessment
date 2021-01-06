@@ -36,12 +36,10 @@ export const fetchSpaces = (token) => {
                 }
             })
             .then(response => {
-                debugger
                 const spaces = response.data._embedded.spaces;
                 dispatch(fetchSpacesSuccess(spaces));
             })
             .catch(error => {
-                debugger
                 const errorMsg = error.message;
                 dispatch(fetchSpacesFailure(errorMsg));
             })
