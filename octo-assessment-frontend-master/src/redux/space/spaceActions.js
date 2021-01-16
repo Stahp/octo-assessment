@@ -1,8 +1,9 @@
 import {
     FETCH_SPACES_REQUEST,
     FETCH_SPACES_SUCCESS,
-    FETCH_SPACES_FAILURE
+    FETCH_SPACES_FAILURE,
 } from './spaceTypes';
+
 import axios from 'axios';
 import { ZUUL_URL, ASSESSMENT_SERVICE_URL } from '../../resources/api';
 
@@ -26,6 +27,7 @@ const fetchSpacesFailure = error => {
     }
 }
 
+
 export const fetchSpaces = (token) => {
     return (dispatch) => {
         dispatch(fetchSpacesRequest)
@@ -36,6 +38,7 @@ export const fetchSpaces = (token) => {
                 }
             })
             .then(response => {
+              console.log(token);
                 const spaces = response.data._embedded.spaces;
                 dispatch(fetchSpacesSuccess(spaces));
             })
@@ -51,18 +54,16 @@ export const insertSpace = (token, space) => {
         axios
             .post(ASSESSMENT_SERVICE_URL + 'spaces', {
                 name: space.name,
-                description: space.description,
-                creationDate: new Date()
-            }, {
+                description: space.description}, {
                 headers: {
                     'Authorization':`Bearer ${token}`
                 }
             })
             .then(response => {
-                console.log(response);
+                console.log("All Good !");
             })
             .catch(error => {
-                console.log(error.message);
+                console.log("error");
             })
     }
 }
@@ -70,7 +71,7 @@ export const insertSpace = (token, space) => {
 export const deleteSpace = (token, id) => {
     return (dispatch) => {
         axios
-            .delete(ZUUL_URL + 'assessment/spaces/' + id, {
+            .delete(ASSESSMENT_SERVICE_URL + 'spaces' + id, {
                 headers: {
                     'Authorization':`Bearer ${token}`
                 }

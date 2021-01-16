@@ -1,0 +1,32 @@
+INSERT_SPACES_REQUEST,
+INSERT_SPACES_SUCCESS,
+INSERT_SPACES_FAILURE
+
+const insertSpacesRequest = () => {
+    return {
+        type: INSERT_SPACES_REQUEST
+    }
+}
+
+const insertSpacesSuccess = spaces => {
+    return {
+        type: INSERT_SPACES_SUCCESS,
+        payload: spaces
+    }
+}
+
+const insertSpacesFailure = error => {
+    return {
+        type: INSERT_SPACES_FAILURE,
+        payload: error
+    }
+}
+
+<Login {...props} type= "SpaceDetail"/>
+
+
+questions:
+
+Do we need to add redux actions for inserting items ?
+do we need to create users, and how can we link them to the users in keycloak ?
+do we really need to store the models data in redux ?

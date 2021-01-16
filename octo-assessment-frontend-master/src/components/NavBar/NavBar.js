@@ -10,7 +10,32 @@ import { FaSearch } from 'react-icons/fa';
 import './NavBar.css';
 import Home from '../Home/Home';
 
+import { generatePath } from "react-router";
+
 function NavBar() {
+
+  var models= ["Space", "Subspace", "Survey", "Section", "Question", "Answer"]
+
+  function createDropDown_Routes(){
+    var dropDownRows= []
+    var routesRows= []
+    for (var model of models){
+      var href= generatePath("/Add/:entity", {
+        entity: model
+      });
+      var str= "Add_".concat(model)
+      dropDownRows.push(<NavDropdown.Item href={href}>{model}</NavDropdown.Item>)
+      routesRows.push(
+        <Route path={href}>
+            <Login type= {str}/>
+        </Route>
+      )
+    }
+    return [dropDownRows, routesRows]
+  }
+    var rows= createDropDown_Routes()
+    var dropDownRows= rows[0]
+    var routesRows= rows[1]
     return (
         <Router>
             <Navbar bg="light" variant="light">
@@ -21,14 +46,9 @@ function NavBar() {
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="mr-auto">
                       <NavDropdown title="Add" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="">Spaces</NavDropdown.Item>
-                        <NavDropdown.Item href="">Subspace</NavDropdown.Item>
-                        <NavDropdown.Item href="">Survey</NavDropdown.Item>
-                        <NavDropdown.Item href="">Section</NavDropdown.Item>
-                        <NavDropdown.Item href="">Question</NavDropdown.Item>
-                        <NavDropdown.Item href="">Answer</NavDropdown.Item>
+                        {dropDownRows}
                       </NavDropdown>
-                        <Nav.Link href="/login" className="links">Browse spaces</Nav.Link>
+                        <Nav.Link href="/BrowseSpaces" className="links">Browse spaces</Nav.Link>
                         <Nav.Link href="/" className="links">Teams</Nav.Link>
                         <Nav.Link href="/" className="links">Profile</Nav.Link>
                     </Nav>
@@ -40,11 +60,17 @@ function NavBar() {
 
             <Switch>
                 <Route path="/home" >
-                    <Home></Home>
+                    <Home/>
                 </Route>
-                <Route path="/login" >
-                    <Login></Login>
+                <Route path="/BrowseSpaces">
+                    <Login type= "Spaces" />
                 </Route>
+                <Route  path="/Spaces/:spaceId"
+                        render= {props =>
+                          <Login spaceId= {props.spaceId} type= "SpaceDetail"/>
+                        }
+                        />
+                {routesRows}
             </Switch>
         </Router>
     )

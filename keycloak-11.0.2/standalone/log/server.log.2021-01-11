@@ -1,0 +1,1 @@
+2021-01-11 12:56:07,846 WARN  [org.keycloak.events] (default task-4) type=LOGIN_ERROR, realmId=assessment-realm, clientId=null, userId=null, ipAddress=127.0.0.1, error=expired_code, restart_after_timeout=true, authSessionParentId=323ea876-a4e2-4e95-b6aa-86ba16c947b6, authSessionTabId=9hNUuLy0mZk

@@ -1,6 +1,8 @@
 package com.octo.assessmentservice.controllers;
 
+import com.octo.assessmentservice.models.Space;
 import com.octo.assessmentservice.models.Subspace;
+import com.octo.assessmentservice.services.SpaceService;
 import com.octo.assessmentservice.services.SubspaceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +16,12 @@ import java.util.List;
 @RequestMapping("/subspaces")
 public class SubspaceController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SpaceController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SubspaceController.class);
 
     @Autowired
     private SubspaceService subspaceService;
+    @Autowired
+    private SpaceService spaceService; // apparently the beans are considered singletons by nature, autowiring them again will not create a new instance if them
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Subspace> getSubspaces() {
@@ -31,6 +35,8 @@ public class SubspaceController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Subspace addSubspace(@RequestBody Subspace subspace) {
+    	Space space = spaceService.getSpace(subspace.getSpaceid());
+    	subspace.setSpace(space);
         return subspaceService.addSubspace(subspace);
     }
 

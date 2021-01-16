@@ -1,6 +1,8 @@
 package com.octo.assessmentservice.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,13 +24,25 @@ public class Subspace {
 	private String description;
     private Date creationDate;
     private Boolean privacy;
-    @JsonIgnore
-    @ManyToOne
+    private Long spaceid;
+    @ManyToOne(cascade =CascadeType.ALL)
     private Space space;
+    
     @OneToMany(mappedBy = "subspace")
     private List<Survey> surveys = new ArrayList<>();
 
-    public String getName() {
+    protected Subspace() {}
+    
+	public Subspace(@JsonProperty("name") String name,@JsonProperty("description") String description, @JsonProperty("spaceid") Long spaceid) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.creationDate= new Date(System.currentTimeMillis());
+		this.privacy= false;
+		this.spaceid= spaceid;
+	}
+    
+	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
@@ -57,5 +71,21 @@ public class Subspace {
 	}
 	public void setSurveys(List<Survey> surveys) {
 		this.surveys = surveys;
+	}
+
+	public Boolean getPrivacy() {
+		return privacy;
+	}
+
+	public void setPrivacy(Boolean privacy) {
+		this.privacy = privacy;
+	}
+
+	public Long getSpaceid() {
+		return spaceid;
+	}
+
+	public void setSpaceid(Long spaceid) {
+		this.spaceid = spaceid;
 	}
 }

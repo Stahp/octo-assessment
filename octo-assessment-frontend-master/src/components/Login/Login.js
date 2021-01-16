@@ -2,20 +2,33 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { keycloakAuth } from '../../redux';
 import SpacesDashboard from '../SpacesDashboard/SpacesDashboard';
+import CreateSpace from '../Create/CreateSpace';
+import CreateSubspace from '../Create/CreateSubspace';
+import SpaceDetail from '../Detail/SpaceDetail';
 
-function Login({ keycloakAuth, authData }) {
+
+ //  { type, spaceId, keycloakAuth, authData}
+function Login(props) {
 
     useEffect(() => {
-        keycloakAuth();
+        props.keycloakAuth();
     }, [])
-/*
-    console.log(authData);
-    debugger;*/
-    return (
-        <>
-            {authData.authenticated ? <SpacesDashboard /> : <p>You can't access</p>}
-        </>
-    )
+
+    if (props.authData.authenticated)
+      switch(props.type){
+        case "Spaces":
+          return <SpacesDashboard />
+        case "SpaceDetail":
+          return <SpaceDetail spaceId= {props.spaceId}/>
+        case "Add_Space":
+          return <CreateSpace/>
+        case "Add_Subspace":
+          return <CreateSubspace/>
+        default:
+          return <p>Are you lost ?</p>
+      }
+    else
+      return <p>You can't access </p>;
 }
 
 const mapStateToProps = state => {

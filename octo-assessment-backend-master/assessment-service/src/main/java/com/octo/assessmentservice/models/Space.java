@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Data
@@ -24,11 +25,17 @@ public class Space {
     @OneToMany(mappedBy = "space")
     private List<Subspace> subspaces = new ArrayList<>();
     
-	public List<Subspace> getSubspaces() {
-		return subspaces;
+	protected Space() {}  // The default constructor exists only for the sake of JPA. You do not use it directly, so it is designated as protected
+	public Space(@JsonProperty("name") String name,@JsonProperty("description") String description) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.creationDate= new Date(System.currentTimeMillis());
+		this.setPrivacy(false);
 	}
-	public void setSubspaces(List<Subspace> subspaces) {
-		this.subspaces = subspaces;
+	
+	public Long getId() {
+		return Id;
 	}
 	public String getName() {
 		return name;
@@ -47,5 +54,17 @@ public class Space {
 	}
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	} 
+	public List<Subspace> getSubspaces() {
+		return subspaces;
+	}
+	public void setSubspaces(List<Subspace> subspaces) {
+		this.subspaces = subspaces;
+	}
+	public Boolean getPrivacy() {
+		return privacy;
+	}
+	public void setPrivacy(Boolean privacy) {
+		this.privacy = privacy;
 	}
 }

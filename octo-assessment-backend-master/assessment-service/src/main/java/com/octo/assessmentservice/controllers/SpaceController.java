@@ -1,6 +1,7 @@
 package com.octo.assessmentservice.controllers;
 
 import com.octo.assessmentservice.models.Space;
+import com.octo.assessmentservice.models.Subspace;
 import com.octo.assessmentservice.services.SpaceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,10 @@ public class SpaceController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Space getSpace(@PathVariable Long id) {
         return spaceService.getSpace(id);
+    }
+    @RequestMapping(value = "/{id}/subspaces", method = RequestMethod.GET)
+    public List<Subspace> getSubspaces(@PathVariable Long id) {
+        return spaceService.getSpace(id).getSubspaces();
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
