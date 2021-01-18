@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { keycloakAuth, insertSpace } from '../../redux';
+import {insertSpace } from '../../redux';
 
 class createSpace extends React.Component{
   constructor(props){
@@ -18,8 +18,8 @@ class createSpace extends React.Component{
   }
 
   handleSubmit(event) {
-    insertSpace(this.props.authData.kc.token ,
-      {name: this.state.name, description: this.state.description})()
+    this.props.insertSpace(this.props.authData.kc.token ,
+      {name: this.state.name, description: this.state.description})
   }
 
   render() {
@@ -56,8 +56,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        insertSpace: (token ,space) => dispatch(insertSpace(token, space)),
-        keycloakAuth: () => dispatch(keycloakAuth())
+        insertSpace: (token ,space) => dispatch(insertSpace(token, space))
     }
 }
 

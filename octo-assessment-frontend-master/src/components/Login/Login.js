@@ -19,7 +19,7 @@ function Login(props) {
         case "Spaces":
           return <SpacesDashboard />
         case "SpaceDetail":
-          return <SpaceDetail spaceId= {props.spaceId}/>
+          return <SpaceDetail/>
         case "Add_Space":
           return <CreateSpace/>
         case "Add_Subspace":

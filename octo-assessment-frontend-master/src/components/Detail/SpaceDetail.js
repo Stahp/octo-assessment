@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { fetchSpaceById } from '../../redux';
 import { connect } from 'react-redux';
+import SpaceDetailForm from './SpaceDetailForm/SpaceDetailForm'
 
 function SpaceDetail(props){
 
-  //const spaceId= props.spaceId
+    var regex= /.*\/(\d+)/;
+    var spaceId= window.location.href.match(regex)[1];
 
-  // this is how i should do it, but this is a very sloppy way of doing it because i can't stay stuck here ...
-  var regex= /.*\/(\d+)/;
-  var spaceId= window.location.href.match(regex)[1];
-  debugger;
-  var space= props.spaceData.spaces.find( element => element.id == spaceId);
+  useEffect(() => {
+      //const spaceId= props.spaceId      // this is how i should do it
 
+      //but this is a very sloppy way of doing it because i can't stay stuck here ...
+
+      props.fetchSpaceById(props.authData.kc.token, spaceId);
+  }, [])
   return(
     <div>
-    {space}
+    {
+        props.spaceData.loading ?
+            <SpaceDetailForm space= {props.spaceData.space}/>
+            :
+            console.log('Loading ...')
+    }
+
     </div>
   )
 }
@@ -22,9 +32,17 @@ function SpaceDetail(props){
 const mapStateToProps = state => {
     return {
         spaceData: state.space,
+        authData: state.auth
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchSpaceById: (token, id) => dispatch(fetchSpaceById(token, id))
     }
 }
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(SpaceDetail)

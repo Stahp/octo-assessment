@@ -1,0 +1,2 @@
+2021-01-14 11:13:06,165 WARN  [org.keycloak.protocol.oidc.utils.OAuth2CodeParser] (default task-3) Code 'f400cf66-edb5-4e80-b653-65b2a19f3537' already used for userSession 'ac3d8686-5a4d-4498-b08d-a52bc6cf5d10' and client 'aa3008cc-d8d0-4d70-8b09-bd713d0acb01'.
+2021-01-14 11:13:06,584 WARN  [org.keycloak.events] (default task-3) type=CODE_TO_TOKEN_ERROR, realmId=assessment-realm, clientId=assessment-app, userId=null, ipAddress=127.0.0.1, error=invalid_code, grant_type=authorization_code, code_id=ac3d8686-5a4d-4498-b08d-a52bc6cf5d10, client_auth_method=client-secret
