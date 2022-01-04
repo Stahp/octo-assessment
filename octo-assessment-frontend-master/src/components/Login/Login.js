@@ -14,12 +14,13 @@ function Login(props) {
         props.keycloakAuth();
     }, [])
 
-    if (props.authData.authenticated)
+    if (props.authData.authenticated){
+      // debugger
       switch(props.type){
         case "Spaces":
           return <SpacesDashboard />
         case "SpaceDetail":
-          return <SpaceDetail/>
+          return <SpaceDetail spaceId= {props.spaceId} />
         case "Add_Space":
           return <CreateSpace/>
         case "Add_Subspace":
@@ -27,6 +28,7 @@ function Login(props) {
         default:
           return <p>Are you lost ?</p>
       }
+    }
     else
       return <p>You can't access </p>;
 }

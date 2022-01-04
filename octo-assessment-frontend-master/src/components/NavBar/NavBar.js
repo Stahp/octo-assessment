@@ -26,7 +26,7 @@ function NavBar() {
       var str= "Add_".concat(model)
       dropDownRows.push(<NavDropdown.Item href={href}>{model}</NavDropdown.Item>)
       routesRows.push(
-        <Route path={href}>
+        <Route exact path={href}>
             <Login type= {str}/>
         </Route>
       )
@@ -40,7 +40,7 @@ function NavBar() {
         <Router>
             <Navbar bg="light" variant="light">
                 <Navbar.Brand href="/home">
-                    <Image className="img" src="octoLogo.png" />
+                    <Image className="img" src="/octoLogo.png" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" >
@@ -59,18 +59,21 @@ function NavBar() {
             </Navbar>
 
             <Switch>
-                <Route path="/home" >
+                // add home path
+                <Route exact path="/home" >
                     <Home/>
                 </Route>
-                <Route path="/BrowseSpaces">
+                // add BrowseSpace path
+                <Route exact path="/BrowseSpaces">
                     <Login type= "Spaces" />
                 </Route>
-                <Route  path="/Spaces/:spaceId"
-                        render= {props =>
-                          <Login spaceId= {props.spaceId} type= "SpaceDetail"/>
-                        }
-                        />
+                // add components detail paths
+                <Route exact path="/Spaces/:spaceId">
+                          <Login type= "SpaceDetail"/>
+                </Route>
+                // add Add_component path
                 {routesRows}
+                <Route path="*" status={404}/>
             </Switch>
         </Router>
     )

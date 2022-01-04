@@ -1,6 +1,6 @@
 #FileLock
-#Sun Jan 17 01:04:22 EST 2021
-server=192.168.0.17\:50031
-hostName=192.168.0.17
+#Wed Dec 29 13:55:34 EST 2021
+server=127.0.1.1\:46603
+hostName=kali
 method=file
-id=1770ef1be07e8e44fd1b9026cf5806b1d566969f43c
+id=17e078c2ce8e7274547c7d1fd9c3f64a9862c0258db

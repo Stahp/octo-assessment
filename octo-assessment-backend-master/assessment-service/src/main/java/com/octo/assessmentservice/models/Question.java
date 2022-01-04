@@ -25,6 +25,7 @@ public class Question {
     private List<Answer> answers = new ArrayList<>();
     @ManyToOne
     private Section section;
+    
 	public String getQuestion() {
 		return question;
 	}

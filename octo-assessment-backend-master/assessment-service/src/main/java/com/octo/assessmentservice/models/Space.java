@@ -15,7 +15,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Space {
-    @Id
+    @Override
+	public String toString() {
+		return "Space [Id=" + Id + ", name=" + name + ", description=" + description + ", creationDate=" + creationDate
+				+ ", privacy=" + privacy + ", subspaces=" + subspaces + "]";
+	}
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String name;

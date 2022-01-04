@@ -14,8 +14,6 @@ function SpacesDashboard({ spaceData, authData, fetchSpaces, keycloakAuth }) {
     useEffect(() => {
         fetchSpaces(authData.kc.token);
     }, [])
-    const randomText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry simply dummy text."
-    const randomDate = "Mar. 9, 2020"
     console.log(authData.kc.token);
     return (
         <div className="h-container">
@@ -26,7 +24,8 @@ function SpacesDashboard({ spaceData, authData, fetchSpaces, keycloakAuth }) {
           */}
             <div className="dashboard-container">
                 <div onClick={console.log(authData)} className="details-container">
-                    <UserDetails name={authData.kc.idTokenParsed.name} email={authData.kc.idTokenParsed.email} resume={authData.kc.idTokenParsed.resume} creationDate={randomDate}/>
+                    <UserDetails name={authData.kc.idTokenParsed.name} email={authData.kc.idTokenParsed.email} resume={authData.kc.idTokenParsed.resume} creationDate="Coming"/>
+
                 </div>
                 <div className="spaces-list-container">
                     <div className="spaces-title">Spaces</div>
@@ -47,11 +46,6 @@ function SpacesDashboard({ spaceData, authData, fetchSpaces, keycloakAuth }) {
                                 console.log('Loading ...')
                         }
                         <PlusCard href= "/Add/Space"/>
-                    </div>
-                    <br />
-                    <div className="spaces-title">Reviews</div>
-                    <div className="">
-                        <SpacesCharts></SpacesCharts>
                     </div>
                 </div>
             </div>

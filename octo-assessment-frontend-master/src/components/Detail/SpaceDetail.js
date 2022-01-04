@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { fetchSpaceById } from '../../redux';
 import { connect } from 'react-redux';
 import SpaceDetailForm from './SpaceDetailForm/SpaceDetailForm'
+import {withRouter} from 'react-router-dom'
 
 function SpaceDetail(props){
-
+    debugger;
     var regex= /.*\/(\d+)/;
     var spaceId= window.location.href.match(regex)[1];
 
@@ -42,7 +43,7 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(SpaceDetail)
+)(SpaceDetail))

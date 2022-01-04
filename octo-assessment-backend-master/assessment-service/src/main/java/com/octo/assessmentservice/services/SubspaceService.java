@@ -22,7 +22,8 @@ public class SubspaceService {
     }
 
     public Subspace getSubspace(Long id) {
-        return subspaceRepository.findById(id).get();
+    	Subspace subspace= subspaceRepository.findById(id).get();
+        return subspace;
     }
 
     public Subspace addSubspace(Subspace subspace) {

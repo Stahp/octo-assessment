@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import {insertSpace } from '../../redux';
+import {withRouter} from 'react-router-dom'
 
 class createSpace extends React.Component{
   constructor(props){
@@ -20,6 +21,8 @@ class createSpace extends React.Component{
   handleSubmit(event) {
     this.props.insertSpace(this.props.authData.kc.token ,
       {name: this.state.name, description: this.state.description})
+      debugger;
+      this.props.history.push('/BrowseSpaces');
   }
 
   render() {
@@ -60,7 +63,7 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(createSpace)
+)(createSpace))

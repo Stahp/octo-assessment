@@ -36,6 +36,7 @@ public class SubspaceController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Subspace addSubspace(@RequestBody Subspace subspace) {
     	Space space = spaceService.getSpace(subspace.getSpaceid());
+    	LOGGER.info(space.toString());
     	subspace.setSpace(space);
         return subspaceService.addSubspace(subspace);
     }

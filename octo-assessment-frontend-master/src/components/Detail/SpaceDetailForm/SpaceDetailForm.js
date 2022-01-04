@@ -7,8 +7,8 @@ import PlusCard from '../../Cards/PlusCard';
 import { generatePath } from "react-router";
 
 function SpaceDetailForm(props) {
-  //debugger;
-
+  var link = "/Add/Subspace/" + props.space.id
+  // debugger;
   //<div className={props.state ? "card-space-body" : "card-space-body-close"}></div>
   //var href= generatePath("/Spaces/:id", {id: props.id})
     return (
@@ -65,7 +65,9 @@ function SpaceDetailForm(props) {
                             )
                     })
                 }
-                <PlusCard href= "/Add/Subspace"/>
+                {
+                  <PlusCard href= {link}/>
+                }
               </div>
             </div>
         </div>
