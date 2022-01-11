@@ -1,2 +1,0 @@
-2020-12-17 15:38:22,903 WARN  [org.keycloak.events] (default task-10) type=LOGIN_ERROR, realmId=assessment-realm, clientId=assessment-app, userId=null, ipAddress=127.0.0.1, error=invalid_redirect_uri, redirect_uri=http://localhost:3000/login
-2020-12-17 17:29:59,835 WARN  [org.keycloak.events] (default task-21) type=REFRESH_TOKEN_ERROR, realmId=master, clientId=security-admin-console, userId=null, ipAddress=127.0.0.1, error=invalid_token, grant_type=refresh_token, client_auth_method=client-secret
